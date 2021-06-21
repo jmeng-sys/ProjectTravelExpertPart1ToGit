@@ -1,0 +1,83 @@
+
+doctype html
+html
+
+head
+  meta(http-equiv='Content-Type' content='text/html; charset=utf-8')
+  title Directory
+  link(href='http://fonts.googleapis.com/css?family=Varela' rel='stylesheet')
+  link(href='styles_directory.css' rel='stylesheet' type='text/css' media='all')
+  link(href='fonts.css' rel='stylesheet' type='text/css' media='all')
+
+
+  
+body
+  #wrapper
+    #header-wrapper
+      #header.container
+        #logo
+          h1
+            a(href='/') Travel Experts
+        #menu
+          ul
+            li
+              a(href='/' accesskey='1' title='') Home
+            li
+              a(href='/packages' accesskey='2' title='') Vacation Packages
+            li
+              a(href='/registration' accesskey='3' title='') Registration
+            li
+              a(href='/contact' accesskey='4' title='') Contact Us
+  #banner
+    .container
+      .title
+        h2 The Best Place To Explore The Globe
+        span.byline Travel &amp; Vacation Packages
+      ul.actions
+        li
+          a.button(href='/packages') Go To Packages
+
+  #contact-container
+    h1.contact-header= "Staff Directory:"
+    table.agents-container
+      tr
+          th(style='text-align:center') Name
+
+          th(style='text-align:center') Position
+
+          th(style='text-align:center') Direct Phone Number
+
+          th(style='text-align:center') Email
+
+          th(colspan='4' style='text-align:center') Office Address
+
+          th(style='text-align:center') Office Number
+
+          th(style='text-align:center') Office Fax
+
+      for agency in agencyList
+        tr
+            td=agency.AgtLastName + ", " + agency.AgtFirstName + " " + agency.AgtMiddleInitial
+            td=agency.AgtPosition
+            td=agency.AgtBusPhone
+            td=agency.AgtEmail
+            td(width="150")=agency.AgncyAddress
+            td(width="50")=agency.AgncyCity + ", " + agency.AgncyProv
+            td=agency.AgncyCountry
+            td=agency.AgncyPostal
+            td=agency.AgncyPhone
+            td=agency.AgncyFax
+
+
+
+        
+
+  #copyright.container
+    p
+      strong Email:
+      |  info@travelexperts.com | 
+      strong Phone:
+      |  555-555-5555 | 
+      strong Address:
+      |  Calgary, AB. Canada
+    p &copy; Travel Experts, All rights reserved.

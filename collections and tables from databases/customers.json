@@ -1,0 +1,16 @@
+[{
+  "_id": {
+    "$oid": "5fd256f2a7462339e0b5adae"
+  },
+  "fname": "Diana",
+  "lname": "Davis",
+  "address": "8 Themyscira Rd. NW",
+  "city": "Calgary",
+  "province": "AB",
+  "country": "Thailand",
+  "postalcode": "H8H 8H8",
+  "homephone": "+668888888888",
+  "busphone": "",
+  "email": "DiaDa115@roger.ca",
+  "__v": 0
+}]

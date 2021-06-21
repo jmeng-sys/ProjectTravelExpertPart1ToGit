@@ -1,0 +1,192 @@
+
+doctype strict
+head
+  meta(http-equiv='Content-Type' content='text/html; charset=utf-8')
+  title Order now!
+  meta(name='keywords' content='')
+  meta(name='description' content='')
+  link(href='http://fonts.googleapis.com/css?family=Varela' rel='stylesheet')
+  link(href='styles.css' rel='stylesheet' type='text/css' media='all')
+  link(href='fonts.css' rel='stylesheet' type='text/css' media='all')
+  script.
+
+      var phoneRegExp = new RegExp(/^\d{3}-\d{3}-\d{4}$/);
+      var creditCardNumberRegExp = new RegExp(/^\d{16}$/);
+      var ccvRegExp = new RegExp(/^\d{3}$/);
+      var emailRegExp = new RegExp(/^\S+@\S+\.\S+$/);
+      var pcRegExp = new RegExp(/^[A-Z]\d[A-Z] ?\d[A-Z]\d$/);
+
+      function validate() {
+          if (fname.value == "") {
+              alert("Please enter a first name.");
+          } else if (lname.value == "") {
+              alert("Please enter a last name.");
+          } else if (phoneRegExp.test(phone.value) == false) {
+              alert("Phone: please use format xxx-xxx-xxxx, no spaces.");
+          } else if (emailRegExp.test(email.value) == false) {
+              alert("Email: please enter a valid email address.");
+          } else if (creditCardName.value == "") {
+              alert("Please enter the name on your credit card.");
+          } else if (creditCardNumberRegExp.test(creditCardNumber.value) == false) {
+              alert("Card number: please enter your sixteen digit credit card number.");
+          } else if (expiryMonth.value == "") {
+              alert("Please select the expiry month.");
+          } else if (expiryYear.value == "") {
+              alert("Please select the expiry year.");
+          } else if (ccvRegExp.test(ccv.value) == false) {
+              alert("CCV: please enter the three digits on the back of your credit card.");
+          } else if (mailingAddress.value == "") {
+              alert("Please enter your mailing address.");
+          } else if (mailingCity.value == "") {
+              alert("Please enter a city.");
+          } else if (mailingProvince.value == "") {
+              alert("Please select a province.");
+          } else if (pcRegExp.test(pc.value) == false) {
+              alert("Postal Code: please use format A1A 1A1, with capital letters and the space.");
+          } else if (pc.value.length == 6) {
+              alert("Postal Code: please use format A1A 1A1, with capital letters and the space.");
+          } else {
+              var submitResponse = confirm("Are you sure you wish to submit?");
+              if (submitResponse == true) {
+              document.getElementById("orderForm").submit();
+              }
+          }
+      }
+body
+  #wrapper
+    #header-wrapper
+      #header.container
+        #logo
+          h1
+            a(href='/') Travel Experts
+        #menu
+          ul
+            li
+              a(href='/' accesskey='1' title='') Home
+            li.active
+              a(href='/packages' accesskey='2' title='') Vacation Packages
+            li
+              a(href='/registration' accesskey='3' title='') Registration
+            li
+              a(href='/contact' accesskey='4' title='') Contact Us
+  #banner
+    .container
+      .title
+        h2 The Best Place To Explore The Globe
+        span.byline Travel &amp; Vacation Packages
+      ul.actions
+        li
+          a.button(href='/packages') Go To Packages
+
+  #wrapper
+    .container
+      br
+      table(border='1')
+          tr
+              th(style='text-align:left') Package Number:
+              td #{PackageId}
+          tr
+              th(style='text-align:left') Package Name:
+              td #{PkgName}
+          tr
+              th(style='text-align:left') Start Date:
+              td #{PkgStartDate}
+          tr
+              th(style='text-align:left') End Date:
+              td #{PkgEndDate}
+          tr
+              th(style='text-align:left') Description:
+              td #{PkgDesc}
+          tr
+              th(style='text-align:left') Price:
+              td $#{PkgBasePrice}
+          tr
+      br
+      form(action='send-order' method='POST' id='orderForm')
+          input(type='hidden' name='packageNumber' value=PackageId readonly required='required')
+          input(type='hidden' value=PkgName readonly required='required')
+          | First Name:
+          input(type='text' name='fname'  required='required' id='fname')
+          br
+          | Last Name:
+          input(type='text' name='lname' required='required' id='lname' )
+          br
+          | Phone Number: (format: xxx-xxx-xxxx)
+          input(type='text' name='phone' required='required' id='phone')
+          br
+          | E-mail:
+          input(type='text' name='email' required='required' id='email')
+          br
+          | Name on the credit card:
+          input(type='text' name='creditCardName' required='required' id='creditCardName')
+          br
+          | Credit card number:
+          input(type='text' name='creditCardNumber' required='required' id='creditCardNumber')
+          br
+          | Credit card expiry:
+          select(name='expiryMonth' required='required' id='expiryMonth')
+              option(value=null)
+              option(value=01) 01
+              option(value=02) 02
+              option(value=03) 03
+              option(value=04) 04
+              option(value=05) 05
+              option(value=06) 06
+              option(value=07) 07
+              option(value=08) 08
+              option(value=09) 09
+              option(value=10) 10
+              option(value=11) 11
+              option(value=12) 12
+          select(name='expiryYear' required='required' id='expiryYear')
+              option(value=null)
+              option(value=2020) 2020
+              option(value=2021) 2021
+              option(value=2022) 2022
+              option(value=2023) 2023
+              option(value=2024) 2024
+              option(value=2025) 2025
+              option(value=2026) 2026
+              option(value=2027) 2027
+          br
+          | CCV (three numbers on the back of your credit card):
+          input(type='text' name='ccv' required='required' id='ccv')
+          br
+          | Mailing address:
+          input(type='text' name='mailingAddress' required='required' id='mailingAddress')
+          br
+          | City:
+          input(type='text' name='mailingCity' required='required' id='mailingCity')
+          br
+          | Province:
+          select(name='mailingProvince' required='required' id='mailingProvince')
+              option(value=null)
+              option(value='AB') AB
+              option(value='BC') BC
+              option(value='MB') MB
+              option(value='NB') NB
+              option(value='NS') NS
+              option(value='NT') NT
+              option(value='NU') NU
+              option(value='ON') ON
+              option(value='PE') PE
+              option(value='QC') QC
+              option(value='SK') SK
+              option(value='YT') YT
+          br
+          | Postal Code:
+          input(type='text' name='postalCode' required='required' id='pc')
+          br
+          br
+          input(type="button" onclick="validate()" value="Submit form")
+          br
+          br
+  #copyright.container
+    p
+      strong Email:
+      |  info@travelexperts.com | 
+      strong Phone:
+      |  555-555-5555 | 
+      strong Address:
+      |  Calgary, AB. Canada
+    p &copy; Travel Experts, All rights reserved.

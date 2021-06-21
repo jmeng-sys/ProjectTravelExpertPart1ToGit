@@ -1,0 +1,114 @@
+<!--Jin wrote this page-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Registration</title>
+        <link href="http://fonts.googleapis.com/css?family=Varela" rel="stylesheet" />
+		<link href="styles.css" rel="stylesheet" type="text/css" media="all" />
+		<link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
+        <script>
+            function forValidate()
+            {
+                for (i=0; i<=10; i++)
+                {
+                    var fieldInput = document.getElementById("field" + i).value;
+                    if (fieldInput == "")
+                    {
+                        alert("All fields other than BUSINESS PHONE must have a value");
+                        return false;
+                    }
+                }
+    
+                if (true)
+                {
+                    return confirm("Data is ok, continue submitting?");
+                }
+                else
+                {
+                    return false;
+                }
+
+            }
+
+            function checkEmail(email)
+           {
+               var reg = /^[a-z0-9._%+-]+@([a-z0-9-]+\.)+[a-z]{2,}$/i;
+               if (!(reg.test(email.value)))
+                {
+                    alert("email address is invalid");
+                    emailField.focus();
+               }
+            }
+
+        </script>
+    </head>
+    <body>
+		<div id="wrapper">
+			<div id="header-wrapper">
+                <div id="header" class="container">
+                    <div id="logo">
+                        <h1><a href="/">Travel Experts</a></h1>
+                    </div>
+                    <div id="menu">
+                        <ul>
+                            <li><a href="/" accesskey="1" title="">Home</a></li>
+                            <li><a href="/packages" accesskey="2" title="">Vacation Packages</a></li>
+                            <li class="active"><a href="/registration" accesskey="3" title="">Registration</a></li>
+                            <li><a href="/contact" accesskey="4" title="">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+			</div>
+			<div id="banner">
+				<div class="container">
+					<div class="title">
+						<h2>The Best Place To Explore The Globe</h2>
+                        <span class="byline">Travel & Vacation Packages</span>
+                    </div>
+					<ul class="actions">
+						<li><a href="/packages" class="button">Go To Packages</a></li>
+					</ul>
+				</div>
+            </div>
+            <br>
+            <h1>Please Fill Out the Registration Form</h1>
+            <br />
+            <p id="para0">Business Phone can be empty</p>
+            <form id="registrationForm" method="POST" action="/send-registration">
+                <label>User ID:</label>
+                <input id="field0" name="userid" /><br />
+                <label>Password:</label>
+                <input id="field1" name="password" /><br />
+                <label>First Name:</label>
+                <input id="field2" name="fname" /><br />
+                <label>Last Name:</label>
+                <input id="field3" name="lname" /><br />
+                <label>Street Address:</label>
+                <input id="field4" name="address" /><br />
+                <label>City:</label>
+                <input id="field5" name="city" /><br />
+                <label>Province:</label>
+                <input id="field6" name="province" /><br />
+                <label>Country:</label>
+                <input id="field7" name="country" /><br />
+                <label>Postal Code:</label>
+                <input id="field8" name="postalcode" /><br />
+                <label>Home Phone:</label>
+                <input id="field9" name="homephone" /><br />
+                <label>Business Phone: (optional)</label>
+                <input name="busphone" /><br />
+                <label>Email:</label>
+                <input id="field10" name="email" onchange="checkEmail(this)"/><br />
+                <br/>
+                <input type="submit" value="Register" onclick="return forValidate()" />
+                <input type="reset" value="Reset" onclick="return confirm('Do you want to reset?')"/> <br />
+            </form>
+            <br>
+        </div>
+        <div id="copyright" class="container">
+            <p><strong>Email:</strong> info@travelexperts.com | <strong>Phone:</strong> 555-555-5555 | <strong>Address:</strong> Calgary, AB. Canada</p>
+            <p>&copy; Travel Experts, All rights reserved.</p>
+        </div>
+    </body>
+</html>
