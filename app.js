@@ -264,7 +264,7 @@ app.get("/packages", (req, res) => {
     });
     conn.connect((err) => {
         if (err) throw err;
-        var sql = `SELECT * FROM packages_ricky`;
+        var sql = `SELECT * FROM packages`;
         conn.query(sql, (err, result, fields) => {
             if (err) throw err;
             res.writeHead(200, { "Content-Type": "text/html" });
@@ -363,7 +363,7 @@ app.get("/order1", (req, res) => {
     });
     conn.connect((err) => {
         if (err) throw err;
-        var sql = `SELECT * FROM packages_ricky WHERE PackageId = 1`;
+        var sql = `SELECT * FROM packages WHERE PackageId = 1`;
         conn.query(sql, (err, result, fields) => {
             if (err) throw err;
             for (package of result) {
@@ -389,7 +389,7 @@ app.get("/order2", (req, res) => {
     });
     conn.connect((err) => {
         if (err) throw err;
-        var sql = `SELECT * FROM packages_ricky WHERE PackageId = 2`;
+        var sql = `SELECT * FROM packages WHERE PackageId = 2`;
         conn.query(sql, (err, result, fields) => {
             if (err) throw err;
             for (package of result) {
@@ -415,7 +415,7 @@ app.get("/order3", (req, res) => {
     });
     conn.connect((err) => {
         if (err) throw err;
-        var sql = `SELECT * FROM packages_ricky WHERE PackageId = 3`;
+        var sql = `SELECT * FROM packages WHERE PackageId = 3`;
         conn.query(sql, (err, result, fields) => {
             if (err) throw err;
             for (package of result) {
@@ -441,7 +441,7 @@ app.get("/order4", (req, res) => {
     });
     conn.connect((err) => {
         if (err) throw err;
-        var sql = `SELECT * FROM packages_ricky WHERE PackageId = 4`;
+        var sql = `SELECT * FROM packages WHERE PackageId = 4`;
         conn.query(sql, (err, result, fields) => {
             if (err) throw err;
             for (package of result) {
@@ -467,7 +467,7 @@ app.get("/order5", (req, res) => {
     });
     conn.connect((err) => {
         if (err) throw err;
-        var sql = `SELECT * FROM packages_ricky WHERE PackageId = 5`;
+        var sql = `SELECT * FROM packages WHERE PackageId = 5`;
         conn.query(sql, (err, result, fields) => {
             if (err) throw err;
             for (package of result) {
@@ -493,7 +493,7 @@ app.get("/order6", (req, res) => {
     });
     conn.connect((err) => {
         if (err) throw err;
-        var sql = `SELECT * FROM packages_ricky WHERE PackageId = 6`;
+        var sql = `SELECT * FROM packages WHERE PackageId = 6`;
         conn.query(sql, (err, result, fields) => {
             if (err) throw err;
             for (package of result) {
@@ -519,7 +519,7 @@ app.get("/order7", (req, res) => {
     });
     conn.connect((err) => {
         if (err) throw err;
-        var sql = `SELECT * FROM packages_ricky WHERE PackageId = 7`;
+        var sql = `SELECT * FROM packages WHERE PackageId = 7`;
         conn.query(sql, (err, result, fields) => {
             if (err) throw err;
             for (package of result) {
@@ -611,7 +611,7 @@ app.get("/searchresults", (req, res) => {
         } else {
             maxDateTranslated = " AND PkgStartDate <= '" + maxDate + "'";
         }
-        var sql = "SELECT * FROM packages_ricky WHERE PkgBasePrice <= " + maxPrice + " AND (keywords LIKE '%" + combinedStr + "%')" + minDateTranslated + maxDateTranslated + " ORDER BY PkgStartDate";
+        var sql = "SELECT * FROM packages WHERE PkgBasePrice <= " + maxPrice + " AND (keywords LIKE '%" + combinedStr + "%')" + minDateTranslated + maxDateTranslated + " ORDER BY PkgStartDate";
         conn.query(sql, (err, result, fields) => {
             if (err) throw err;
             res.writeHead(200, { "Content-Type": "text/html" });
